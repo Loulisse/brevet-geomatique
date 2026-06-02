@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from "react";
 
 // ─── SUPABASE CONFIG ────────────────────────────────────────────────────────
 // Replace these with your actual Supabase project URL and anon key
-const SUPABASE_URL = "YOUR_SUPABASE_URL";
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://ycfdnrnlorioalnzslrg.supabase.co/rest/v1/";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InljZmRucm5sb3Jpb2FsbnpzbHJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzODUwMzcsImV4cCI6MjA5NTk2MTAzN30.RK7MIZCWvgeAvc5FnPda2SqZXpIdK_vSZuu1uApq0xk";
 
 async function sbFetch(path, options = {}) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1${path}`, {

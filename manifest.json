@@ -1,0 +1,12 @@
+{
+  "name": "Brevet Géomatique",
+  "short_name": "Brevet Géo",
+  "start_url": "/brevet-geomatique/",
+  "display": "standalone",
+  "background_color": "#0d0f14",
+  "theme_color": "#5b9cf6",
+  "icons": [
+    { "src": "https://placehold.co/192x192/5b9cf6/ffffff?text=BG", "sizes": "192x192", "type": "image/png" },
+    { "src": "https://placehold.co/512x512/5b9cf6/ffffff?text=BG", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -799,8 +799,9 @@ export default function App() {
   function enriched() { return enrich(phases); }
 
   async function savePhase(p) {
-    await dbUpsert("objectives", p);
-    setPhases((prev) => { const e = prev.find((x) => x.id === p.id); return e ? prev.map((x) => x.id === p.id ? p : x) : [...prev, p]; });
+    const { progress, ...clean } = p;
+    await dbUpsert("objectives", clean);
+    setPhases((prev) => { const e = prev.find((x) => x.id === clean.id); return e ? prev.map((x) => x.id === clean.id ? clean : x) : [...prev, clean]; });
   }
   async function deletePhase(id) { await dbDelete("objectives", id); setPhases((prev) => prev.filter((x) => x.id !== id)); }
   async function saveSub(parent, sub) {
@@ -838,10 +839,12 @@ export default function App() {
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
       <style>{`
         * { -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
-        body { margin: 0; background: ${C.bg}; }
+        html, body { margin: 0; background: ${C.bg}; overscroll-behavior: none; }
+        input, textarea, select { font-size: 16px !important; }
         input[type=date]::-webkit-calendar-picker-indicator { filter: invert(0.4); }
         ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-thumb { background: ${C.border}; border-radius: 2px; }
         select option { background: ${C.surface}; color: ${C.text}; }
+        button { touch-action: manipulation; }
         button:active { opacity: 0.75; }
         [contenteditable]:empty:before { content: "Prenez vos notes ici…"; color: ${C.muted}; }
         [contenteditable]:focus { border-color: ${C.accent}; }
